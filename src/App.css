@@ -1,38 +1,110 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* General styling for square container */
+.welcome-container, .register-container, .login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 400px; /* Fixed height to make it a square */
+  width: 400px;  /* Fixed width to make it a square */
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: white;
+  border: 3px solid #000;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: auto;
 }
 
-.App-link {
-  color: #61dafb;
+/* Logo styling with black cloud icon */
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1::after {
+  content: '☁'; /* Single cloud icon */
+  font-size: 24px;
+  color: black; /* Black color for the cloud */
+  margin-left: 5px;
+}
+
+/* Form elements */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  padding: 10px;
+  margin: 8px 0;
+  border: 2px solid #000;
+  border-radius: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Button styling */
+button {
+  margin-top: 15px;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  background-color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #f0f0f0;
+}
+
+button:active {
+  background-color: #d9d9d9;
+}
+
+/* Welcome page styling */
+.welcome-container p {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.welcome-container button {
+  width: 80%;
+  margin-top: 10px;
+}
+
+/* Contenedor principal que envuelve el cuadro */
+.app-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0; /* Fondo opcional para resaltar el cuadro */
+  margin: 0;
+}
+
+/* Estilo del cuadro cuadrado */
+.welcome-container, .register-container, .login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 400px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: white;
+  border: 3px solid #000;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
