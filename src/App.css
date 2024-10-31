@@ -81,30 +81,3 @@ button:active {
   width: 80%;
   margin-top: 10px;
 }
-
-/* Contenedor principal que envuelve el cuadro */
-.app-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f0f0f0; /* Fondo opcional para resaltar el cuadro */
-  margin: 0;
-}
-
-/* Estilo del cuadro cuadrado */
-.welcome-container, .register-container, .login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 400px;
-  width: 400px;
-  text-align: center;
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  background-color: white;
-  border: 3px solid #000;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}

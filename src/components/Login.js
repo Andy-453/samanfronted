@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import API_BASE_URL from '../config';
 
 function Login() {
@@ -6,6 +7,8 @@ function Login() {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+  const navigate = useNavigate();
+  
   const handleLogin = async (e) => {
     e.preventDefault();
   
@@ -26,6 +29,9 @@ function Login() {
         const data = await response.json();
         alert("Login exitoso");
         console.log("Token:", data.token);
+
+        // Redirigir al usuario a la página principal después del login exitoso
+        navigate("/home");
 
       } else {
         const errorData = await response.json();
