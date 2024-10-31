@@ -6,14 +6,14 @@ function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [recentlyViewed, setRecentlyViewed] = useState([]);
   const [recentlyAdded, setRecentlyAdded] = useState([]);
+  const navigate = useNavigate();
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const handleUpload = () => {
-    // Funcionalidad de carga de documentos
-    alert("Subir documentos");
+  const handleUploadRedirect = () => {
+    navigate('/upload');
   };
 
   return (
@@ -41,7 +41,7 @@ function HomePage() {
         <button>CREAR GRUPO FAMILIAR</button>
         <button>ARCHIVES</button>
         <button>PROTECTION</button>
-        <button onClick={handleUpload}>EXPORT</button> {/* Botón para cargar documentos */}
+        <button onClick={handleUploadRedirect}>EXPORT</button> {/* Botón para redirigir a la carga de archivos */}
         <button>DELETE</button>
       </div>
 

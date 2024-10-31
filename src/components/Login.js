@@ -30,6 +30,9 @@ function Login() {
         alert("Login exitoso");
         console.log("Token:", data.token);
 
+        // Guardar el token JWT en el localStorage
+        localStorage.setItem('token', data.token);  
+
         // Redirigir al usuario a la página principal después del login exitoso
         navigate("/home");
 
