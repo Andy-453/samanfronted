@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import './FileUploadPage.css';
 import { useNavigate } from 'react-router-dom';
@@ -8,43 +7,45 @@ function FileUploadPage() {
   const [selectedFile, setSelectedFile] = useState(null);
   const navigate = useNavigate();
 
-  const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
   };
 
   const handleUpload = async () => {
     if (!selectedFile) {
-      alert('Por favor seleccione un archivo para subir.');
+      alert('Por favor, seleccione un archivo.');
       return;
     }
 
     const formData = new FormData();
-    formData.append('DocumentName', selectedFile.name);
-    formData.append('Address', 'Dirección del documento'); // Puedes cambiar la dirección si es necesario
-    formData.append('TypeDocument', 'Tipo de documento'); // Puedes cambiar el tipo de documento si es necesario
     formData.append('DocumentFile', selectedFile);
-    formData.append('IsProtected', false); // Valor predeterminado
-    formData.append('IsShared', false); // Valor predeterminado
-    formData.append('IsDeleted', false); // Valor predeterminado
-
-    const token = localStorage.getItem('token');
+    formData.append('DocumentName', selectedFile.name);
+    formData.append('IsProtected', false);
+    formData.append('IsShared', false);
+    formData.append('Address', 'Dirección de prueba');
+    formData.append('TypeDocument', selectedFile.type);
+    formData.append('IsDeleted', false);
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/Documents/upload`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer ${token}`,
-        },
+      const response = await fetch(`${API_BASE_URL}/api/Documents/upload`, {
+        method: 'POST',
+        body: formData,
       });
 
-      if (response.status === 200) {
+      if (response.ok) {
         alert('Documento subido con éxito');
-        navigate('/home'); // Redirigir a la página principal después de la carga exitosa
+        navigate('/home');
+      } else {
+        alert('Error al subir el documento');
       }
     } catch (error) {
       console.error('Error al subir el documento:', error);
-      alert('Error al subir el documento. Por favor, inténtelo de nuevo.');
+      alert('Error al subir el documento');
     }
+  };
+
+  const handleCancel = () => {
+    navigate('/home');
   };
 
   return (
@@ -57,11 +58,15 @@ function FileUploadPage() {
           <span>Samir - ID</span>
         </div>
       </header>
-
-      <div className="upload-container">
-        <input type="file" onChange={handleFileChange} />
-        <button onClick={handleUpload}>SUBIR</button>
-        <button onClick={() => navigate('/home')}>CANCELAR</button>
+      <div className="file-upload-container">
+        <div className="file-drop-area">
+          <input type="file" className="file-input" onChange={handleFileChange} />
+          <p>{selectedFile ? selectedFile.name : 'Por favor arrastre los archivos aquí'}</p>
+        </div>
+        <div className="buttons">
+          <button onClick={handleUpload}>SUBIR</button>
+          <button onClick={handleCancel}>CANCELAR</button>
+        </div>
       </div>
     </div>
   );
