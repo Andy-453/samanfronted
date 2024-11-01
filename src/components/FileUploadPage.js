@@ -27,16 +27,27 @@ function FileUploadPage() {
     formData.append('IsDeleted', false);
 
     try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('Usuario no autenticado. Por favor, inicie sesión.');
+        navigate('/login');
+        return;
+      }
+
       const response = await fetch(`${API_BASE_URL}/api/Documents/upload`, {
         method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         body: formData,
       });
 
       if (response.ok) {
         alert('Documento subido con éxito');
-        navigate('/home');
+        navigate('/home', { replace: true });
       } else {
-        alert('Error al subir el documento');
+        const errorResponse = await response.json();
+        alert(`Error al subir el documento: ${errorResponse.message || 'Error desconocido'}`);
       }
     } catch (error) {
       console.error('Error al subir el documento:', error);
@@ -45,7 +56,7 @@ function FileUploadPage() {
   };
 
   const handleCancel = () => {
-    navigate('/home');
+    navigate('/home', { replace: true });
   };
 
   return (
