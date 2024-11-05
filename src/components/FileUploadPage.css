@@ -12,9 +12,8 @@ body {
   }
   
   .file-upload-page {
-    width: 80%;
-    max-width: 800px;
-    margin: 0 auto;
+    width: 50vw;
+    height: 50vh;
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -40,13 +39,6 @@ body {
     align-items: center;
   }
   
-  .user-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-left: 10px;
-  }
-  
   .buttons {
     display: flex;
     justify-content: space-between;
@@ -56,7 +48,7 @@ body {
   .buttons button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: #000000;
     color: #fff;
     border: none;
     border-radius: 8px;
