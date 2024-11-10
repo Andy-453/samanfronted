@@ -5,10 +5,19 @@ import API_BASE_URL from '../config';
 
 function FileUploadPage() {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [filePreview, setFilePreview] = useState(null); // Añade estado para la previsualización
   const navigate = useNavigate();
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+    const file = event.target.files[0];
+    setSelectedFile(file);
+
+    // Verificamos si es una imagen para mostrar previsualización
+    if (file && file.type.startsWith('image/')) {
+      setFilePreview(URL.createObjectURL(file));
+    } else {
+      setFilePreview(null); // No hay previsualización para otros tipos de archivo
+    }
   };
 
   const handleUpload = async () => {
@@ -44,6 +53,16 @@ function FileUploadPage() {
 
       if (response.ok) {
         alert('Documento subido con éxito');
+        
+        // Enviar previsualización y detalles del archivo a "recentlyAdded"
+        const recentlyAdded = JSON.parse(localStorage.getItem('recentlyAdded') || '[]');
+        recentlyAdded.unshift({
+          name: selectedFile.name,
+          preview: filePreview,
+          type: selectedFile.type,
+        });
+        localStorage.setItem('recentlyAdded', JSON.stringify(recentlyAdded));
+
         navigate('/home', { replace: true });
       } else {
         const errorResponse = await response.json();
@@ -73,6 +92,7 @@ function FileUploadPage() {
         <div className="file-drop-area">
           <input type="file" className="file-input" onChange={handleFileChange} />
           <p>{selectedFile ? selectedFile.name : 'Por favor arrastre los archivos aquí'}</p>
+          {filePreview && <img src={filePreview} alt="Preview" className="file-preview-img" />}
         </div>
         <div className="buttons">
           <button onClick={handleUpload}>SUBIR</button>
