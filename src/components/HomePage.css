@@ -101,24 +101,53 @@ body {
   
   .file-preview-container {
     display: flex;
-    gap: 20px;
     flex-wrap: wrap;
+    gap: 10px;
   }
   
   .file-preview {
     width: 150px;
     padding: 10px;
-    text-align: center;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #f8f9fa;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .file-thumbnail {
     width: 100%;
     height: 100px;
-    background-color: #dcdcdc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+  }
+  
+  .file-thumbnail img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
     border-radius: 4px;
-    margin-top: 10px;
-  }  
+  }
+  
+  .file-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .file-icon img.icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .file-icon p {
+    margin: 0;
+    font-size: 12px;
+    color: #555;
+  }
+  
+  
   
