@@ -8,11 +8,41 @@ function Register() {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [acceptPolicies, setAcceptPolicies] = useState(false); // Estado para el checkbox de políticas
 
   const navigate = useNavigate(); // Hook de navegación
 
+const validateEmail = (email) => {
+    // Valida si el correo tiene el formato correcto
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateName = (name) => {
+    // Valida si el nombre solo contiene letras y espacios
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    return nameRegex.test(name);
+  };
+
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    // Validación de nombre y correo electrónico
+    if (!validateName(name)) {
+      setErrorMessage("El nombre solo debe contener letras y espacios.");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setErrorMessage("Por favor, ingresa un correo electrónico válido.");
+      return;
+    }
+
+    // Verificación de aceptación de políticas
+    if (!acceptPolicies) {
+      setErrorMessage("Debes aceptar las políticas de tratamiento de datos.");
+      return;
+    }
 
     const userRegisterData = {
       name,
@@ -81,6 +111,17 @@ function Register() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+
+        {/* Checkbox para aceptar políticas de tratamiento de datos */}
+        <label>
+          <input
+            type="checkbox"
+            checked={acceptPolicies}
+            onChange={(e) => setAcceptPolicies(e.target.checked)}
+          />
+          Acepto las <a href="/policies" target="_blank" rel="noopener noreferrer">políticas de tratamiento de datos</a>
+        </label>
+
         <button type="submit">Registrar</button>
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
