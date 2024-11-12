@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
 
@@ -7,6 +7,16 @@ function HomePage() {
   const [recentlyViewed, setRecentlyViewed] = useState([]);
   const [recentlyAdded, setRecentlyAdded] = useState([]);
   const navigate = useNavigate();
+  const [userName, setUserName] = useState('');
+
+
+  useEffect(() => {
+    // Recuperar el nombre del usuario desde localStorage
+    const name = localStorage.getItem('userName');
+    if (name) {
+      setUserName(name);
+    }
+  }, []);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -23,7 +33,7 @@ function HomePage() {
           <h1>SamAn</h1>
         </div>
         <div className="user-info">
-          <span>Samir - ID</span>
+          <span>{userName}</span> {/* Mostramos el nombre dinámicamente */}
         </div>
       </header>
 

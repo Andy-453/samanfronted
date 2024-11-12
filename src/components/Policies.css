@@ -1,0 +1,56 @@
+.policies-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9; /* Fondo suave */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    font-family: Arial, sans-serif; /* Tipografía */
+    color: #333; /* Color de texto */
+  }
+  
+  .policies-container h1 {
+    font-size: 2em;
+    color: #2c3e50; /* Color del título */
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e74c3c; /* Línea decorativa bajo el título */
+    padding-bottom: 10px;
+  }
+  
+  .policies-container h2 {
+    font-size: 1.5em;
+    color: #34495e; /* Color de subtítulos */
+    margin-top: 20px;
+  }
+  
+  .policies-container p {
+    line-height: 1.6;
+    margin: 10px 0;
+  }
+  
+  .policies-container a {
+    color: #e74c3c; /* Color de enlaces */
+    text-decoration: none;
+  }
+  
+  .policies-container a:hover {
+    text-decoration: underline; /* Subrayado al pasar el mouse */
+  }
+  
+  .policies-container ul {
+    margin: 10px 0;
+    padding-left: 20px;
+  }
+  
+  .policies-container li {
+    margin-bottom: 8px;
+  }
+  
+  .policies-footer {
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 30px;
+  }
+  

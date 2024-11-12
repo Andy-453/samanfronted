@@ -32,7 +32,7 @@ function Login() {
 
         // Guardar el token JWT en el localStorage
         localStorage.setItem('token', data.token);  
-
+        localStorage.setItem('userName', data.name); // Guardar el nombre del usuario
         // Redirigir al usuario a la página principal después del login exitoso
         navigate("/home");
 
