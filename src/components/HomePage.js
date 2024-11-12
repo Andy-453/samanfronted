@@ -6,15 +6,16 @@ function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [recentlyViewed, setRecentlyViewed] = useState([]);
   const [recentlyAdded, setRecentlyAdded] = useState([]);
-  const navigate = useNavigate();
   const [userName, setUserName] = useState('');
-
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Recuperar el nombre del usuario desde localStorage
+    // Obtener el nombre del usuario desde localStorage
     const name = localStorage.getItem('userName');
     if (name) {
       setUserName(name);
+    } else {
+      console.error("El nombre del usuario no se encuentra en localStorage.");
     }
   }, []);
 
@@ -51,7 +52,7 @@ function HomePage() {
         <button>CREAR GRUPO FAMILIAR</button>
         <button>ARCHIVES</button>
         <button>PROTECTION</button>
-        <button onClick={handleUploadRedirect}>EXPORT</button> {/* Botón para redirigir a la carga de archivos */}
+        <button onClick={handleUploadRedirect}>EXPORT</button>
         <button>DELETE</button>
       </div>
 
