@@ -26,6 +26,11 @@ function HomePage() {
   const handleUploadRedirect = () => {
     navigate('/upload');
   };
+  
+  const handleArchivesRedirect = () => {
+    navigate('/archives');
+  };
+
 
   return (
     <div className="home-page">
@@ -50,7 +55,7 @@ function HomePage() {
       <div className="button-group">
         <button>ACCESS REQUEST</button>
         <button>CREAR GRUPO FAMILIAR</button>
-        <button>ARCHIVES</button>
+        <button onClick={handleArchivesRedirect}>ARCHIVES</button>
         <button>PROTECTION</button>
         <button onClick={handleUploadRedirect}>EXPORT</button>
         <button>DELETE</button>
