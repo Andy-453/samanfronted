@@ -9,7 +9,7 @@ function ArchivesPage() {
   useEffect(() => {
     const token = localStorage.getItem('token'); // Obtén el token desde localStorage si es necesario
     // Llamada a la API para obtener la lista de archivos
-    fetch('https://samandm2.somee.com/api/Documents/user', {
+    fetch('https://www.samandm4.somee.com/api/Documents/user', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ function ArchivesPage() {
   const downloadFile = async (fileId, fileName) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`https://samandm2.somee.com/api/Documents/user/${fileId}`, {
+      const response = await fetch(`https://www.samandm4.somee.com/api/Documents/user/${fileId}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`, // Incluye el token si es necesario
