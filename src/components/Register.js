@@ -24,6 +24,12 @@ const validateEmail = (email) => {
     return nameRegex.test(name);
   };
 
+  const validatePassword = (password) => {
+    // Requisitos de seguridad de la contraseña
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return passwordRegex.test(password);
+  };
+
   const handleRegister = async (e) => {
     e.preventDefault();
 
@@ -35,6 +41,11 @@ const validateEmail = (email) => {
 
     if (!validateEmail(email)) {
       setErrorMessage("Por favor, ingresa un correo electrónico válido.");
+      return;
+    }
+    
+    if (!validatePassword(password)) {
+      setErrorMessage("La contraseña debe tener al menos 8 caracteres, incluyendo una mayúscula, una minúscula, un número y un carácter especial.");
       return;
     }
 
