@@ -1,3 +1,3 @@
 // src/config.js
-const API_BASE_URL = "https://localhost:7210";
+const API_BASE_URL = "https://samandm2.somee.com";
 export default API_BASE_URL;
